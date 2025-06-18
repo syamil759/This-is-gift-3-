@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Surprise 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(270deg, #ffe6f2, #ffb6c1, #ffcce5);
+      background-size: 600% 600%;
+      animation: gradientShift 10s ease infinite;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 2px 2px #ff69b4;
+      margin: 15px 0;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+    .big-text {
+      font-size: 2.5em;
+      margin: 15px 0;
+      opacity: 0;
+      animation: fadeIn 1.5s 0.5s forwards;
+    }
+    .medium-text {
+      font-size: 1.5em;
+      margin: 10px 0;
+      opacity: 0;
+      animation: fadeIn 1.5s 1s forwards;
+    }
+    button {
+      background-color: #ff69b4;
+      border: none;
+      padding: 15px 30px;
+      color: white;
+      font-size: 1.2em;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px #c94f7c;
+      transition: 0.3s, box-shadow 0.3s;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #ff85c1;
+      box-shadow: 0 0 20px #ff69b4;
+    }
+    .hidden { display: none; }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .cat {
+      position: absolute;
+      width: 60px;
+      animation: jump 2s infinite alternate;
+    }
+    .cat.left {
+      bottom: 10px;
+      left: 10px;
+    }
+    .cat.right {
+      top: 10px;
+      right: 10px;
+    }
+    @keyframes jump {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+    .love {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      clip-path: polygon(50% 0%, 61% 16%, 98% 35%, 79% 68%, 50% 100%, 21% 68%, 2% 35%, 39% 16%);
+      opacity: 0.8;
+      animation: loveRise 5s linear infinite;
+    }
+    @keyframes loveRise {
+      0% { bottom: -20px; opacity: 1; }
+      100% { bottom: 100%; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="cat left" alt="Cat">
+  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="cat right" alt="Cat">
+
+  <div id="page1">
+    <button onclick="showPage2()">Click here to continue</button>
+  </div>
+
+  <div id="page2" class="hidden">
+    <h1>From Syamil for Dasha 💗</h1>
+    <div class="big-text">1 July</div>
+    <div class="medium-text">Happy Birthday Dasha 🎂:3💗💗</div>
+    <button onclick="showPage3()">Click here</button>
+  </div>
+
+  <div id="page3" class="hidden">
+    <div class="medium-text">
+      You are the sweetest part of my life ❤️.<br>
+      I'm so lucky to have you and I hope this birthday<br>
+      brings you as much joy as you bring me 💖.<br>
+      I love you so much! 💕
+    </div>
+  </div>
+
+  <script>
+    function showPage2() {
+      document.getElementById('page1').classList.add('hidden');
+      document.getElementById('page2').classList.remove('hidden');
+    }
+    function showPage3() {
+      document.getElementById('page2').classList.add('hidden');
+      document.getElementById('page3').classList.remove('hidden');
+    }
+
+    // love rise
+    setInterval(() => {
+      const love = document.createElement('div');
+      love.classList.add('love');
+      love.style.left = Math.random() * 100 + 'vw';
+      document.body.appendChild(love);
+      setTimeout(() => love.remove(), 5000);
+    }, 300);
+  </script>
+</body>
+</html>
